@@ -6,11 +6,11 @@
                 name: '',
                 pageJS: '',
                 pageTmpl: '',
-                component: ''
+                component: this.loadPage()
             }
         },
         methods: {
-            loadPage: function() {
+            loadPage: function(resolve, reject) {
                 this.name = this.$route.name;
                 var meta = this.$route.meta || {};
                 if (!this.name || (!meta.js && !meta.tmpl)) {
@@ -32,7 +32,11 @@
                                 return data;
                             };
                         }
-                        that.component = pageJS;
+                        if (resolve) {
+                            resolve(pageJS);
+                        } else {
+                            that.component = pageJS;
+                        }
                         delete window.page;
                         that.pageTmpl = that.pageJS = '';
                     }
@@ -97,7 +101,6 @@
         watch: {
             $route: function() {
                 if (this.name !== this.$route.name) {
-                    this.component = '';
                     this.loadPage();
                 }
             }
@@ -105,9 +108,6 @@
         beforeDestroyed: function() {
             this.removeResource();
         },
-        mounted: function() {
-            this.loadPage();
-        },
-        template: '<component v-if="component" :is="component"></component><p v-else>Loading page {{name}}</p>'
+        template: '<component :is="component"></component>'
     };
 }();
