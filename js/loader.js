@@ -1,6 +1,7 @@
 ~function () {
     window.SIMPLE_VUE = window.SIMPLE_VUE || {};
     window.SIMPLE_VUE.loader = {
+        name: 'page-loader',
         data: function() {
             return {
                 name: '',
@@ -30,6 +31,7 @@
                     if ((that.pageTmpl || !meta.tmpl) && (pageJS || !meta.js)) {
                         pageJS = pageJS || {}; // only template
                         pageJS.template = that.pageTmpl || pageJS.template || '';
+                        pageJS.name = pageJS.name || ('page-' + that.name);
                         data = pageJS.data;
                         if (data && (typeof data !== 'function')) {
                             pageJS.data = (function(d) {

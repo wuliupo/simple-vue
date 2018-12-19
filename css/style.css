@@ -217,7 +217,7 @@ img {
 }
 .page-view {
     padding: 20px;
-    min-height: 300px;
+    min-height: calc(100vh - 80px);
 }
 .container:after {
     content: "";
@@ -229,7 +229,7 @@ header .logo, header ul, header li {
     display: inline-block;
 }
 header {
-    line-height: 40px;
+    line-height: 60px;
 }
 header .logo {
     padding: 2px 6px;

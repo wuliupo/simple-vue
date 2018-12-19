@@ -4,7 +4,7 @@
             now: ''
         },
         mounted: function() {
-            this.now = new Date();
+            this.now = new Date().toLocaleString();
         }
     };
 }();
