@@ -42,7 +42,7 @@
                             })(data);
                         }
                         pages[that.name] = that.component = pageJS;
-                        this.removeResource('js-' + that.name);
+                        that.removeResource('js-' + that.name);
                         that.pageTmpl = that.pageJS = '';
                     }
                 }
