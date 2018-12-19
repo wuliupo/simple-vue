@@ -42,12 +42,16 @@
                             })(data);
                         }
                         pages[that.name] = that.component = pageJS;
-                        delete window.page;
+                        this.removeResource('js-' + that.name);
                         that.pageTmpl = that.pageJS = '';
                     }
                 }
                 if (meta.js) {
-                    this.loadScript(meta.js + '?name=' + this.name, callback);
+                    this.loadText(meta.js, function(rst) {
+                        var content = rst.data.replace('exports', 'window.SIMPLE_VUE.PAGES.' + that.name)
+                        that.loadScript('', content);
+                        callback();
+                    });
                 }
                 if (meta.tmpl) {
                     this.loadText(meta.tmpl, callback);
@@ -77,14 +81,21 @@
                 style.addEventListener('error', errorback);
                 document.head.appendChild(style);
             },
-            loadScript: function(src, callback, errorback) {
-                if (!src) {
-                    return;
-                }
+            loadScript: function(src, content, callback, errorback) {
                 var script = document.createElement('script');
                 script.type = 'text/javascript';
                 script.id = 'js-' + this.name;
-                script.src = src;
+                if (src) {
+                    script.src = src;
+                } else if (content) {
+                    try {
+                        script.appendChild(document.createTextNode(content));
+                    } catch (ex) {
+                        script.text = content;
+                    }
+                } else {
+                    throw new Error('loadScript need src or content');
+                }
                 callback && script.addEventListener('load', callback);
                 errorback = errorback || function() {
                     console.error('load script error', src);
@@ -92,14 +103,15 @@
                 script.addEventListener('error', errorback);
                 document.head.appendChild(script);
             },
-            removeResource: function() {
-                var style = document.getElementById('css-' + this.name);
-                if (style) {
-                    document.head.removeChild(style);
-                }
-                var script = document.getElementById('js-' + this.name);
-                if (script) {
-                    document.head.removeChild(script);
+            removeResource: function(id) {
+                if (id) {
+                    var dom = document.getElementById(id);
+                    if (dom) {
+                        document.head.removeChild(dom);
+                    }
+                } else {
+                    this.removeResource('css-' + this.name);
+                    this.removeResource('js-' + this.name);
                 }
             }
         },

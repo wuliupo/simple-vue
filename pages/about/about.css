@@ -1,4 +1,7 @@
 .about-home {
-    color: #F00;
     border: 1px solid #888;
+}
+
+.about-home h1 {
+    color: #F00;
 }
