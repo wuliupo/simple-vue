@@ -32,10 +32,12 @@
                         pageJS.template = that.pageTmpl || pageJS.template || '';
                         data = pageJS.data;
                         if (data && (typeof data !== 'function')) {
-                            data = Object.assign({}, data);
-                            pageJS.data = function() {
-                                return data;
-                            };
+                            pageJS.data = (function(d) {
+                                d = Object.assign({}, d);
+                                return function() {
+                                    return d;
+                                };
+                            })(data);
                         }
                         pages[that.name] = that.component = pageJS;
                         delete window.page;
