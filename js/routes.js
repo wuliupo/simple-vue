@@ -12,9 +12,9 @@
             name: 'home',
             meta: {
                 nav: '首页',
-                tmpl: '/pages/home/home.html',
-                js: '/pages/home/home.js',
-                css: '/pages/home/home.css'
+                tmpl: 'pages/home/home.html',
+                js: 'pages/home/home.js',
+                css: 'pages/home/home.css'
             }
         },
         {
@@ -23,8 +23,8 @@
             name: 'about',
             meta: {
                 nav: '关于',
-                tmpl: '/pages/about/about.html',
-                css: '/pages/about/about.css'
+                tmpl: 'pages/about/about.html',
+                css: 'pages/about/about.css'
             }
         },
         {
@@ -32,7 +32,7 @@
             component: loader,
             name: '404',
             meta: {
-                tmpl: '/pages/404.html'
+                tmpl: 'pages/404.html'
             }
         },
         {
