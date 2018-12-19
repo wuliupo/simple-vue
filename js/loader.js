@@ -27,7 +27,7 @@
                 this.removeResource();
                 function callback(rst) {
                     that.pageTmpl = that.pageTmpl || rst && rst.data;
-                    var pageJS = (that.pageJS = that.pageJS || window.page);
+                    var pageJS = (that.pageJS = that.pageJS || pages[that.name]);
                     if ((that.pageTmpl || !meta.tmpl) && (pageJS || !meta.js)) {
                         pageJS = pageJS || {}; // only template
                         pageJS.template = that.pageTmpl || pageJS.template || '';
@@ -47,7 +47,7 @@
                     }
                 }
                 if (meta.js) {
-                    this.loadScript(meta.js, callback);
+                    this.loadScript(meta.js + '?name=' + this.name, callback);
                 }
                 if (meta.tmpl) {
                     this.loadText(meta.tmpl, callback);
