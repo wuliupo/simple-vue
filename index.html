@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Simple Vue</title>
+</head>
+<body>
+<div id="app" class="main-container">
+    <header class="header container">
+        <span class="logo">Simple Vue demo</span>
+        <ul>
+            <li v-for="(item, index) in $router.options.routes" :key="index" v-if="item.meta && item.meta.nav">
+                <router-link :to="item">{{item.meta.nav}}</router-link>
+            </li>
+        </ul>
+    </header>
+    <router-view class="page-view">Loading...</router-view>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue-router/dist/vue-router.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="js/loader.js"></script>
+<script src="js/routes.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
