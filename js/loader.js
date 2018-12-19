@@ -6,15 +6,20 @@
                 name: '',
                 pageJS: '',
                 pageTmpl: '',
-                component: this.loadPage()
+                component: this.loadPage
             }
         },
         methods: {
-            loadPage: function(resolve, reject) {
+            loadPage: function() {
                 this.name = this.$route.name;
                 var meta = this.$route.meta || {};
                 if (!this.name || (!meta.js && !meta.tmpl)) {
                     this.$router.push({ path: '/' });
+                    return;
+                }
+                var pages = window.SIMPLE_VUE.PAGES;
+                if (pages[this.name]) {
+                    this.component = pages[this.name];
                     return;
                 }
                 var that = this;
@@ -32,11 +37,7 @@
                                 return data;
                             };
                         }
-                        if (resolve) {
-                            resolve(pageJS);
-                        } else {
-                            that.component = pageJS;
-                        }
+                        pages[that.name] = that.component = pageJS;
                         delete window.page;
                         that.pageTmpl = that.pageJS = '';
                     }

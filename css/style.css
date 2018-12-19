@@ -210,15 +210,36 @@ img {
 .main-container {
     margin: 0 auto;
     max-width: 1200px;
+    padding: 0 20px 20px;
+    border-left: 1px solid #CCC;
+    border-right: 1px solid #CCC;
+    min-height: 100vh;
 }
-
+.page-view {
+    padding: 20px;
+    min-height: 300px;
+}
 .container:after {
     content: "";
     position: relative;
     display: table;
     clear: both;
 }
-
 header .logo, header ul, header li {
     display: inline-block;
+}
+header {
+    line-height: 40px;
+}
+header .logo {
+    padding: 2px 6px;
+    border: 2px solid #7e94b1;
+    border-radius: 6px;
+    line-height: 20px;
+}
+header li {
+    padding: 0 6px;
+}
+header li .router-link-active {
+    color: #20a0ff;
 }
