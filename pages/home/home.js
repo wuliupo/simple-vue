@@ -3,6 +3,6 @@ exports = {
         now: ''
     },
     mounted: function() {
-        this.now = new Date().toLocaleString();
+        this.now = new Date().toISOString();
     }
 }

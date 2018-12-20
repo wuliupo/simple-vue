@@ -218,6 +218,8 @@ img {
 .page-view {
     padding: 20px;
     min-height: calc(100vh - 80px);
+    background-color: #FEFEF2;
+    border: 1px solid #E2E2E2;
 }
 .container:after {
     content: "";
