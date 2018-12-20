@@ -12,7 +12,7 @@
         },
         methods: {
             loadPage: function() {
-                this.name = this.$route.name;
+                this.name = this.$route.name.replace(/[^\w$]/g, '_');
                 var meta = this.$route.meta || {};
                 if (!this.name || (!meta.js && !meta.tmpl)) {
                     this.$router.push({ path: '/' });

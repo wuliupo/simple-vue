@@ -215,8 +215,10 @@ img {
     border-right: 1px solid #CCC;
     min-height: 100vh;
 }
-.page-view {
+router-view {
     display: block;
+}
+.page-view {
     padding: 20px;
     min-height: calc(100vh - 80px);
     background-color: #FEFEF2;

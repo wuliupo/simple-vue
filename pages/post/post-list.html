@@ -1,0 +1,8 @@
+<div class="page-post">
+    <h1>日志列表</h1>
+    <ul>
+        <li v-for="(item, index) in items" :key="index">
+            <router-link :to="{name: 'post-detail', params: {id: item.id}}">{{item.id + ': ' + item.title}}</router-link>
+        </li>
+    </ul>
+</div>
