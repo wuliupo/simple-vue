@@ -3,6 +3,7 @@
     Vue.config.silent = false;
     window.SIMPLE_VUE = window.SIMPLE_VUE || {};
     window.SIMPLE_VUE.PAGES = window.SIMPLE_VUE.PAGES || {};
+    Vue.prototype.$eventbus = new Vue(); // 用于事件通知
     window.SIMPLE_VUE.instance = new Vue({
         router: new VueRouter({
             mode: 'hash',
