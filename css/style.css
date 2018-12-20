@@ -216,6 +216,7 @@ img {
     min-height: 100vh;
 }
 .page-view {
+    display: block;
     padding: 20px;
     min-height: calc(100vh - 80px);
     background-color: #FEFEF2;
@@ -242,6 +243,6 @@ header .logo {
 header li {
     padding: 0 6px;
 }
-header li .router-link-active {
+header li .router-link-active, header li a:active, header li a:hover {
     color: #20a0ff;
 }
