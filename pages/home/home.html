@@ -1,4 +1,9 @@
 <div class="page-home">
     <h1>首页内容</h1>
     <p>当前时间：{{now}}</p>
+    <p>其他页面：
+        <a href="/#/about">普通链接关于</a>
+        <router-link :to="{name: 'about'}">router-link关于</router-link>
+        <router-link :to="{path: '/abcd'}">test abcd 404</router-link>
+    </p>
 </div>

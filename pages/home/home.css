@@ -1,3 +1,11 @@
 .page-home h1 {
     color: brown;
 }
+.page-home p {
+    line-height: 30px;
+}
+.page-home a {
+    margin: 0 5px;
+    text-decoration: underline;
+    color: #00F;
+}
