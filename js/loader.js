@@ -14,7 +14,7 @@
             loadPage: function() {
                 this.name = this.$route.name.replace(/[^\w$]/g, '_');
                 var meta = this.$route.meta || {};
-                if (!this.name || (!meta.js && !meta.html)) {
+                if (!this.name || (!meta.js && !meta.html && !meta.vue)) {
                     this.$router.push({ path: '/' });
                     return;
                 }
@@ -23,6 +23,12 @@
                     this.component = pages[this.name];
                     return;
                 }
+
+                if (meta.vue) {
+                    pages[this.name] = this.component = httpVueLoader(meta.vue);
+                    return;
+                }
+
                 var that = this;
                 this.removeResource();
                 function callback(rst) {
@@ -48,7 +54,7 @@
                 }
                 if (meta.js) {
                     this.loadText(meta.js, function(rst) {
-                        var content = '~function(){' + rst.data.replace('exports', 'window.SIMPLE_VUE.PAGES.' + that.name) + '}()'
+                        var content = '~function(){' + rst.data.replace(/(module\.)?exports/, 'window.SIMPLE_VUE.PAGES.' + that.name) + '}()'
                         that.loadScript('', content);
                         callback();
                     });

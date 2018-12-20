@@ -19,6 +19,15 @@
             }
         },
         {
+            path: '/todo',
+            component: loader,
+            name: 'todo',
+            meta: {
+                nav: 'TODO',
+                vue: 'pages/todo.vue'
+            }
+        },
+        {
             path: '/about',
             component: loader,
             name: 'about',
