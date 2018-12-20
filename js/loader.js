@@ -48,7 +48,7 @@
                 }
                 if (meta.js) {
                     this.loadText(meta.js, function(rst) {
-                        var content = rst.data.replace('exports', 'window.SIMPLE_VUE.PAGES.' + that.name)
+                        var content = '~function(){' + rst.data.replace('exports', 'window.SIMPLE_VUE.PAGES.' + that.name) + '}()'
                         that.loadScript('', content);
                         callback();
                     });
