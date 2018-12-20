@@ -13,7 +13,7 @@
             name: 'home',
             meta: {
                 nav: '首页',
-                tmpl: 'pages/home/home.html',
+                html: 'pages/home/home.html',
                 js: 'pages/home/home.js',
                 css: 'pages/home/home.css'
             }
@@ -24,7 +24,7 @@
             name: 'about',
             meta: {
                 nav: '关于',
-                tmpl: 'pages/about/about.html',
+                html: 'pages/about/about.html',
                 css: 'pages/about/about.css'
             }
         },
@@ -42,7 +42,7 @@
                     name: 'post-list',
                     meta: {
                         nav: '日志列表',
-                        tmpl: 'pages/post/post-list.html',
+                        html: 'pages/post/post-list.html',
                         js: 'pages/post/post-list.js',
                         css: 'pages/post/post.css'
                     }
@@ -53,7 +53,7 @@
                     name: 'post-detail',
                     meta: {
                         nav: '日志正文',
-                        tmpl: 'pages/post/post-detail.html',
+                        html: 'pages/post/post-detail.html',
                         js: 'pages/post/post-detail.js',
                         css: 'pages/post/post.css'
                     }
@@ -65,7 +65,7 @@
             component: loader,
             name: '404',
             meta: {
-                tmpl: 'pages/404.html'
+                html: 'pages/404.html'
             }
         },
         {

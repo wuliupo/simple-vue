@@ -6,7 +6,7 @@
             return {
                 name: '',
                 pageJS: '',
-                pageTmpl: '',
+                pageHtml: '',
                 component: this.loadPage
             }
         },
@@ -14,7 +14,7 @@
             loadPage: function() {
                 this.name = this.$route.name.replace(/[^\w$]/g, '_');
                 var meta = this.$route.meta || {};
-                if (!this.name || (!meta.js && !meta.tmpl)) {
+                if (!this.name || (!meta.js && !meta.html)) {
                     this.$router.push({ path: '/' });
                     return;
                 }
@@ -26,11 +26,11 @@
                 var that = this;
                 this.removeResource();
                 function callback(rst) {
-                    that.pageTmpl = that.pageTmpl || rst && rst.data;
+                    that.pageHtml = that.pageHtml || rst && rst.data;
                     var pageJS = (that.pageJS = that.pageJS || pages[that.name]);
-                    if ((that.pageTmpl || !meta.tmpl) && (pageJS || !meta.js)) {
+                    if ((that.pageHtml || !meta.html) && (pageJS || !meta.js)) {
                         pageJS = pageJS || {}; // only template
-                        pageJS.template = that.pageTmpl || pageJS.template || '';
+                        pageJS.template = that.pageHtml || pageJS.template || '';
                         pageJS.name = pageJS.name || ('page-' + that.name);
                         data = pageJS.data;
                         if (data && (typeof data !== 'function')) {
@@ -43,7 +43,7 @@
                         }
                         pages[that.name] = that.component = pageJS;
                         that.removeResource('js-' + that.name);
-                        that.pageTmpl = that.pageJS = '';
+                        that.pageHtml = that.pageJS = '';
                     }
                 }
                 if (meta.js) {
@@ -53,8 +53,8 @@
                         callback();
                     });
                 }
-                if (meta.tmpl) {
-                    this.loadText(meta.tmpl, callback);
+                if (meta.html) {
+                    this.loadText(meta.html, callback);
                 }
                 if (meta.css) {
                     this.loadStyle(meta.css);
