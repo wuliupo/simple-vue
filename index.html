@@ -10,7 +10,7 @@
 </head>
 <body>
 <div id="app" class="main-container">
-    <header class="header container">
+    <header class="clearfix container">
         <router-link :to="{path: '/'}" class="logo">Simple Vue demo</router-link>
         <ul>
             <li v-for="(item, index) in $router.options.routes" :key="index" v-if="item.meta && item.meta.nav">

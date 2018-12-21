@@ -22,6 +22,11 @@ body {
     padding: 0;
 }
 
+.clearfix:before, .clearfix:after {
+    content: "";
+    display: table;
+}
+
 a {
     text-decoration: none;
     color: inherit;
@@ -248,4 +253,15 @@ header li {
 }
 header li .router-link-active, header li a:active, header li a:hover {
     color: #20a0ff;
+}
+
+@media (max-width: 600px) {
+    header .logo {
+        display: block;
+        width: 127px;
+        margin-top: 20px;
+    }
+    .page-view {
+        min-height: calc(100vh - 130px);
+    }
 }
