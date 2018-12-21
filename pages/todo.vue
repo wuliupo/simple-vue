@@ -67,6 +67,7 @@ module.exports = {
 .real-app {
     margin: 0 auto;
     width: 600px;
+    max-width: 100%;
     min-height: auto;
     box-shadow: 0 0 5px #666;
 }
@@ -106,18 +107,10 @@ module.exports = {
     text-decoration: line-through;
 }
 .real-app .toggle {
-    text-align: center;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
     position: absolute;
     top: 0;
     bottom: 0;
     margin: auto 20px;
-    border: none;
-    appearance: none;
-    outline: none;
-    cursor: pointer;
 }
 .real-app .destroy {
     position: absolute;
@@ -152,14 +145,14 @@ module.exports = {
     box-sizing: border-box;
 }
 .real-app .left, .real-app .clear {
-    width: 150px;
+    width: 30%;
 }
 .real-app .clear {
     text-align: right;
     cursor: pointer;
 }
 .real-app .tabs {
-    width: 200px;
+    width: 30%;
     display: flex;
     justify-content: space-around;
 }
@@ -173,5 +166,13 @@ module.exports = {
 .real-app .tabs .actived {
     border-color: rgba(175, 47, 47, 0.4);
     border-radius: 5px;
+}
+@media (max-width: 600px) {
+    .real-app .helper > * {
+        width: 100%;
+    }
+    .real-app .helper {
+        display: block;
+    }
 }
 </style>
