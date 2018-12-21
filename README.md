@@ -10,3 +10,4 @@ This is a simple demo for using [Vue](http://vuejs.org) and [Vue-router](http://
 
 - TODO list <https://github.com/Abelable/vue-todos>
 - Browser Vue loader <https://github.com/FranckFreiburger/http-vue-loader>
+- Browser asset loader <https://github.com/wuliupo/http-component-loader>
